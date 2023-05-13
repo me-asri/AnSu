@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">AnSu</string>
+
+    <string name="item_load">Load</string>
+    <string name="item_solve">Solve</string>
+    <string name="item_generate">Generate riddle</string>
+    <string name="item_export">Export</string>
+    <string name="item_exit">Exit</string>
+    <string name="item_clear_ans">Clear answers</string>
+    <string name="item_clear_board">Clear board</string>
+    <string name="item_unlock_tiles">Unlock tiles</string>
+</resources>

@@ -1,0 +1,21 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.AnSu" parent="Theme.Material3.DynamicColors.DayNight">
+        <!-- Customize your dark theme here. -->
+        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimaryDark">@color/material_dynamic_neutral10</item>
+
+        <item name="actionBarTheme">@style/Base.Theme.AnSu.ActionBar</item>
+
+        <item name="sudokuBorderColor">@color/material_dynamic_primary50</item>
+    </style>
+
+    <style name="Base.Theme.AnSu.ActionBar" parent="ThemeOverlay.MaterialComponents.ActionBar">
+        <!-- Change overflow icon color -->
+        <item name="colorControlNormal">@color/material_dynamic_primary90</item>
+        <!-- Change drawable icon color -->
+        <item name="iconTint">@color/material_dynamic_primary90</item>
+        <!-- Change title text color -->
+        <item name="titleTextColor">@color/material_dynamic_primary90</item>
+    </style>
+</resources>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/solveItem"
+        android:title="@string/item_solve"
+        android:icon="@drawable/ic_check"
+        app:showAsAction="always"
+        tools:ignore="AlwaysShowAction" />
+
+    <item
+        android:id="@+id/generateItem"
+        android:title="@string/item_generate"
+        android:icon="@drawable/ic_randomize"
+        app:showAsAction="always"
+        tools:ignore="AlwaysShowAction"/>
+
+    <item
+        android:id="@+id/loadItem"
+        android:title="@string/item_load"
+        android:icon="@drawable/ic_file_open"
+        app:showAsAction="always"
+        tools:ignore="AlwaysShowAction" />
+
+    <item
+        android:id="@+id/clearAnsItem"
+        android:title="@string/item_clear_ans"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/clearBoardItem"
+        android:title="@string/item_clear_board"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/unlockTilesItem"
+        android:title="@string/item_unlock_tiles"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/exportItem"
+        android:title="@string/item_export"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/exitItem"
+        android:title="@string/item_exit"
+        app:showAsAction="never" />
+</menu>
