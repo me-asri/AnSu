@@ -91,11 +91,6 @@ public class SudokuView extends TableLayout {
                 tile.setHeight(dp(40));
                 tile.setTextAlignment(TEXT_ALIGNMENT_CENTER);
 
-                // Prevent user from interacting with the tiles
-                tile.setInputType(InputType.TYPE_NULL);
-                tile.setFocusable(false);
-                tile.setFocusableInTouchMode(false);
-
                 tile.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.shape_border, null));
 
                 tile.setFilters(new InputFilter[]{
