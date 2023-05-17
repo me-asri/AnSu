@@ -174,6 +174,7 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean onGenerateItemClick(MenuItem item) {
         stopSolutionTimer();
+        closeKeyboard();
 
         GameMatrix matrix = Creator.createFull(GameSchemas.SCHEMA_9X9);
         Riddle riddle = Creator.createRiddle(matrix);
@@ -264,11 +265,7 @@ public class MainActivity extends AppCompatActivity {
             case SOLVING:
                 mSolveItem.setIcon(R.drawable.ic_stop);
 
-                // Hide keyboard
-                View view = getCurrentFocus();
-                if (view != null) {
-                    inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
-                }
+                closeKeyboard();
 
                 mBinding.board.setReadonly(true);
 
@@ -276,6 +273,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         mUiState = state;
+    }
+
+    private void closeKeyboard() {
+        View view = getCurrentFocus();
+        if (view != null) {
+            inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
     }
 
     class ShowSolutionTask extends TimerTask {
