@@ -42,11 +42,15 @@ public class SudokuView extends TableLayout {
 
     public SudokuView(Context context) {
         super(context);
+        init(context);
     }
 
     public SudokuView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        init(context);
+    }
 
+    private void init(Context context) {
         inflate(context, R.layout.sudoku_board, this);
         createBoard(context);
     }
