@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:layout_gravity="center_horizontal"
-        app:strokeColor="?attr/sudokuBorderColor"
+        app:strokeColor="?attr/colorPrimary"
         app:strokeWidth="1dp"
         app:cardCornerRadius="4dp"
         app:cardElevation="10dp">

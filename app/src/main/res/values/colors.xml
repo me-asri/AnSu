@@ -2,4 +2,22 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!--
+     Generated using
+     https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors
+    -->
+    <color name="primary_900">#186031</color>
+    <color name="primary_800">#268044</color>
+    <color name="primary_700">#2e914f</color>
+    <color name="primary_600">#38a35b</color>
+    <color name="primary_500">#40b365</color>
+    <color name="primary_400">#5ebe7b</color>
+    <color name="primary_300">#7bca92</color>
+    <color name="primary_200">#a1d8b1</color>
+    <color name="primary_100">#c6e7cf</color>
+    <color name="primary_50">#e7f6ec</color>
+
+    <color name="primary_dark_900">#101311</color>
+    <color name="primary_dark_800">#303331</color>
 </resources>

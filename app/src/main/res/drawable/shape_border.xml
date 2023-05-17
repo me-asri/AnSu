@@ -4,5 +4,5 @@
     <!-- For some reason I'm not able to use attributes as color -->
     <stroke
         android:width="0.5dp"
-        android:color="@android:color/system_accent1_500" />
+        android:color="@color/primary_500" />
 </shape>
