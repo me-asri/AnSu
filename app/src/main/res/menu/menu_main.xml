@@ -15,7 +15,7 @@
         android:title="@string/item_generate"
         android:icon="@drawable/ic_randomize"
         app:showAsAction="always"
-        tools:ignore="AlwaysShowAction"/>
+        tools:ignore="AlwaysShowAction" />
 
     <item
         android:id="@+id/loadItem"
@@ -37,7 +37,12 @@
     <item
         android:id="@+id/unlockTilesItem"
         android:title="@string/item_unlock_tiles"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/lockTilesItem"
+        android:title="@string/item_lock_tiles"
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/exportItem"

@@ -38,7 +38,7 @@ public class SudokuView extends TableLayout {
 
     private final EditText[][] mTiles = new EditText[MATRIX_WIDTH][MATRIX_WIDTH];
 
-    private boolean mIgnoreCheck = true;
+    private boolean mIgnoreCheck = false;
 
     public SudokuView(Context context) {
         super(context);
@@ -61,7 +61,7 @@ public class SudokuView extends TableLayout {
 
             for (int j = 0; j < BLOCK_WIDTH; j++) {
                 EditText[][] tilesCreated = new EditText[BLOCK_WIDTH][BLOCK_WIDTH];
-                TableLayout block = createBlock(context, tilesCreated);
+                TableLayout block = createBlock(context, i, j, tilesCreated);
 
                 block.setPadding(dp(1), dp(1), dp(1), dp(1));
                 block.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.shape_border_thick, null));
@@ -79,10 +79,10 @@ public class SudokuView extends TableLayout {
         invalidate();
     }
 
-    private TableLayout createBlock(Context context, EditText[][] tilesCreated) {
+    private TableLayout createBlock(Context context, int row, int col, EditText[][] tilesCreated) {
         TableLayout table = new TableLayout(context);
         for (int i = 0; i < BLOCK_WIDTH; i++) {
-            TableRow row = new TableRow(context);
+            TableRow tableRow = new TableRow(context);
 
             for (int j = 0; j < BLOCK_WIDTH; j++) {
                 EditText tile = new EditText(context);
@@ -96,33 +96,25 @@ public class SudokuView extends TableLayout {
                 tile.setFilters(new InputFilter[]{
                         new SudokuInputFilter()
                 });
-                tile.addTextChangedListener(new SudokuTextWatcher(tile, i, j));
+                tile.addTextChangedListener(new SudokuTextWatcher(tile, (row * BLOCK_WIDTH) + i, (col * BLOCK_WIDTH) + j));
 
                 if (tilesCreated != null) {
                     tilesCreated[i][j] = tile;
                 }
 
-                row.addView(tile);
+                tableRow.addView(tile);
             }
 
-            table.addView(row);
+            table.addView(tableRow);
         }
 
         return table;
     }
 
     @SuppressLint("SetTextI18n")
-    public void place(int i, int j, byte value, boolean ignoreCheck) {
-        if (ignoreCheck) {
-            mIgnoreCheck = true;
-        }
-
+    public void place(int i, int j, byte value) {
         mTiles[i][j].setText(Integer.toString(value));
         mAnswerMatrix.set(i, j, value);
-
-        if (ignoreCheck) {
-            mIgnoreCheck = false;
-        }
     }
 
     public void loadRiddle(GameMatrix input) {
@@ -192,6 +184,18 @@ public class SudokuView extends TableLayout {
                 setTileLock(mTiles[i][j], false);
             }
         }
+    }
+
+    public void lockAllTiles() {
+        for (int i = 0; i < MATRIX_WIDTH; i++) {
+            for (int j = 0; j < MATRIX_WIDTH; j++) {
+                if (mAnswerMatrix.get(i, j) != 0) {
+                    setTileLock(mTiles[i][j], true);
+                }
+            }
+        }
+
+        mGameMatrix.setAll(mAnswerMatrix.getArray());
     }
 
     @Nullable
@@ -281,11 +285,6 @@ public class SudokuView extends TableLayout {
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-            if (mIgnoreCheck) {
-                mEditText.setTextColor(mOldColors);
-                return;
-            }
-
             if (s.toString().isEmpty()) {
                 mEditText.setTextColor(mOldColors);
                 mAnswerMatrix.set(mRow, mCol, (byte) 0);
@@ -294,7 +293,7 @@ public class SudokuView extends TableLayout {
             }
 
             byte value = Byte.parseByte(s.toString());
-            if (mAnswerMatrix.canSet(mRow, mCol, value)) {
+            if (mAnswerMatrix.canSet(mRow, mCol, value) || mIgnoreCheck) {
                 mEditText.setTextColor(mOldColors);
                 mAnswerMatrix.set(mRow, mCol, value);
             } else {

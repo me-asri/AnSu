@@ -9,4 +9,5 @@
     <string name="item_clear_ans">Clear answers</string>
     <string name="item_clear_board">Clear board</string>
     <string name="item_unlock_tiles">Unlock tiles</string>
+    <string name="item_lock_tiles">Lock tiles</string>
 </resources>

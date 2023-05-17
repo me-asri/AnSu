@@ -123,6 +123,10 @@ public class MainActivity extends AppCompatActivity {
         MenuItem unlockTilesItem = menu.findItem(R.id.unlockTilesItem);
         unlockTilesItem.setOnMenuItemClickListener(this::onUnlockTilesItemClick);
 
+        MenuItem lockTilesItem = menu.findItem(R.id.lockTilesItem);
+        lockTilesItem.setOnMenuItemClickListener(this::onLockTilesItemClick);
+
+
         MenuItem exitItem = menu.findItem(R.id.exitItem);
         exitItem.setOnMenuItemClickListener(this::onExitItemClick);
 
@@ -215,6 +219,15 @@ public class MainActivity extends AppCompatActivity {
         stopSolutionTimer();
 
         mBinding.board.unlockAllTiles();
+
+        return true;
+    }
+
+    private boolean onLockTilesItemClick(MenuItem item) {
+        closeKeyboard();
+        stopSolutionTimer();
+
+        mBinding.board.lockAllTiles();
 
         return true;
     }
@@ -322,7 +335,7 @@ public class MainActivity extends AppCompatActivity {
             byte value = mSolution.get(i, j);
             int finalI = i;
             int finalJ = j;
-            runOnUiThread(() -> mBinding.board.place(finalI, finalJ, value, true));
+            runOnUiThread(() -> mBinding.board.place(finalI, finalJ, value));
 
             mIndex++;
         }
