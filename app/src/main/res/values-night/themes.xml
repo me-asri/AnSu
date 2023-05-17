@@ -7,7 +7,7 @@
 
         <item name="actionBarTheme">@style/Base.Theme.AnSu.ActionBar</item>
 
-        <item name="sudokuBorderColor">@color/material_dynamic_primary50</item>
+        <item name="sudokuBorderColor">@color/material_dynamic_primary40</item>
     </style>
 
     <style name="Base.Theme.AnSu.ActionBar" parent="ThemeOverlay.MaterialComponents.ActionBar">

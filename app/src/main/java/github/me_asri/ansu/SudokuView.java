@@ -28,6 +28,7 @@ import de.sfuhrm.sudoku.GameSchemas;
 
 public class SudokuView extends TableLayout {
     static public final int MATRIX_WIDTH = GameSchemas.SCHEMA_9X9.getWidth();
+    static public final int BLOCK_WIDTH = GameSchemas.SCHEMA_9X9.getBlockWidth();
 
     static private final String BUNDLE_KEY_GAME = "game_array";
     static private final String BUNDLE_KEY_ANS = "answer_array";
@@ -51,11 +52,35 @@ public class SudokuView extends TableLayout {
     }
 
     private void createBoard(Context context) {
-        for (int i = 0; i < MATRIX_WIDTH; i++) {
+        for (int i = 0; i < BLOCK_WIDTH; i++) {
             TableRow row = new TableRow(context);
 
-            for (int j = 0; j < MATRIX_WIDTH; j++) {
+            for (int j = 0; j < BLOCK_WIDTH; j++) {
+                EditText[][] tilesCreated = new EditText[BLOCK_WIDTH][BLOCK_WIDTH];
+                TableLayout block = createBlock(context, tilesCreated);
+                block.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.shape_border_thick, null));
+
+                for (int x = 0; x < BLOCK_WIDTH; x++) {
+                    System.arraycopy(tilesCreated[x], 0, mTiles[i * BLOCK_WIDTH + x], j * BLOCK_WIDTH, BLOCK_WIDTH);
+                }
+
+                row.addView(block);
+            }
+
+            addView(row);
+        }
+
+        invalidate();
+    }
+
+    private TableLayout createBlock(Context context, EditText[][] tilesCreated) {
+        TableLayout table = new TableLayout(context);
+        for (int i = 0; i < BLOCK_WIDTH; i++) {
+            TableRow row = new TableRow(context);
+
+            for (int j = 0; j < BLOCK_WIDTH; j++) {
                 EditText tile = new EditText(context);
+
                 tile.setWidth(dp(40));
                 tile.setHeight(dp(40));
                 tile.setTextAlignment(TEXT_ALIGNMENT_CENTER);
@@ -72,15 +97,17 @@ public class SudokuView extends TableLayout {
                 });
                 tile.addTextChangedListener(new SudokuTextWatcher(tile, i, j));
 
-                row.addView(tile);
+                if (tilesCreated != null) {
+                    tilesCreated[i][j] = tile;
+                }
 
-                mTiles[i][j] = tile;
+                row.addView(tile);
             }
 
-            addView(row);
+            table.addView(row);
         }
 
-        invalidate();
+        return table;
     }
 
     @SuppressLint("SetTextI18n")
