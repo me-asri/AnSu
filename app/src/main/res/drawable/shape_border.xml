@@ -3,6 +3,6 @@
     android:shape="rectangle">
     <!-- For some reason I'm not able to use attributes as color -->
     <stroke
-        android:width="0.8dp"
+        android:width="0.5dp"
         android:color="@color/material_dynamic_primary50" />
 </shape>

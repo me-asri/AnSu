@@ -58,6 +58,8 @@ public class SudokuView extends TableLayout {
             for (int j = 0; j < BLOCK_WIDTH; j++) {
                 EditText[][] tilesCreated = new EditText[BLOCK_WIDTH][BLOCK_WIDTH];
                 TableLayout block = createBlock(context, tilesCreated);
+
+                block.setPadding(dp(1), dp(1), dp(1), dp(1));
                 block.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.shape_border_thick, null));
 
                 for (int x = 0; x < BLOCK_WIDTH; x++) {
