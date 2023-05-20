@@ -12,6 +12,13 @@ Features include:
 ## Download
 Grab the latest version from the [release page](https://github.com/me-asri/AnSu/releases).
 
+## Screenshots
+<p float="left">
+    <img src="pics/riddle.png" width="200" />
+    <img src="pics/solved.png" width="200" />
+    <img src="pics/menu.png" width="200" />
+</p>
+
 ## Sudoku File Format
 AnSu uses the same `sdk` file format used by SudoCue and SandMan.
 
